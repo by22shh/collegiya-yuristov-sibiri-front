@@ -2,7 +2,7 @@
 
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Users, Award, Shield, Clock, Scale, Handshake, Target, GraduationCap, Star, CreditCard, Smartphone, BookOpen } from 'lucide-react';
+import { Users, Award, Shield, Clock, Scale, Handshake, Target, GraduationCap, Star, CreditCard, Smartphone, BookOpen, Send } from 'lucide-react';
 
 interface TeamMember {
   name: string;
@@ -200,8 +200,35 @@ export default function AboutSection({ onPrivacyPolicy }: AboutSectionProps = {}
         </Card>
       </div>
 
-      {/* Юридическая информация */}
+      {/* Социальные сети */}
       <div className="text-center mt-12 pt-8 border-t border-gray-200">
+        <div className="mb-6">
+          <p className="text-sm text-gray-600 mb-3">Мы в социальных сетях:</p>
+          <div className="flex justify-center space-x-4">
+            <a
+              href="https://vk.com/colus_law"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center w-10 h-10 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors duration-200"
+              aria-label="ВКонтакте"
+            >
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M23.498 6.186c.164-.543 0-.942-.777-.942h-2.577c-.653 0-.953.343-1.117.726 0 0-1.308 3.178-3.162 5.242-.598.598-.872.789-1.2.789-.163 0-.404-.191-.404-.734V6.186c0-.653-.191-.942-.734-.942H8.94c-.404 0-.653.302-.653.583 0 .618.945.761 1.042 2.5v3.775c0 .826-.149.977-.47.977-.872 0-2.995-3.193-4.255-6.843-.247-.702-.493-.986-1.15-.986H.875c-.734 0-.883.343-.883.726 0 .679.872 4.056 4.056 8.51 2.126 2.992 5.134 4.61 7.865 4.61 1.64 0 1.84-.368 1.84-1.003v-2.325c0-.734.155-.883.68-.883.387 0 1.05.191 2.593 1.66 1.77 1.77 2.063 2.564 3.067 2.564h2.577c.734 0 1.106-.368.893-1.101-.232-.727-1.065-1.783-2.167-3.01-.598-.7-1.495-1.452-1.767-1.828-.387-.5-.276-.721 0-1.166 0 0 3.12-4.393 3.446-5.884z"/>
+              </svg>
+            </a>
+            <a
+              href="https://t.me/colus_law"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center w-10 h-10 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors duration-200"
+              aria-label="Telegram"
+            >
+              <Send className="w-5 h-5" />
+            </a>
+          </div>
+        </div>
+
+        {/* Юридическая информация */}
         <div className="text-xs text-gray-500 space-y-1">
           <p>Общество с ограниченной ответственностью "Коллегия юристов Сибири"</p>
           <p>ОГРН: 1225400038467 • ИНН/КПП: 5473053475/547301001</p>

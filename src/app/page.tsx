@@ -1262,7 +1262,7 @@ export default function HomePage() {
         <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8 px-4 sm:px-0">
           Заполните короткую форму, и мы перезвоним<br className="hidden sm:block" />
           <span className="sm:hidden">Вам в течение дня</span>
-          <span className="hidden sm:inline">вам в течение дня</span>
+          <span className="hidden sm:inline">Вам в течение дня</span>
         </p>
 
         <div className="space-y-3 sm:space-y-4 md:space-y-6 max-w-2xl mx-auto">
@@ -1286,15 +1286,25 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
               <div className="text-left">
                 <div className="text-xs sm:text-sm text-gray-500">Телефон</div>
-                <div className="text-sm sm:text-base md:text-lg font-medium text-gray-900">+7 923 200-00-52</div>
+                <div className="text-sm sm:text-base md:text-lg font-medium text-gray-900">+7 (913) 951-15-07</div>
               </div>
-              <Button
-                className="bg-gray-900 text-white hover:bg-gray-800 text-xs sm:text-sm md:text-base px-3 md:px-4 py-2"
-                onClick={() => window.open('tel:+79232000052')}
-              >
-                <Phone className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
-                Позвонить
-              </Button>
+              <div className="flex items-center gap-2 sm:gap-3">
+                <Button
+                  className="text-white text-xs sm:text-sm md:text-base px-3 md:px-4 py-2"
+                  style={{ backgroundColor: '#25D366' }}
+                  onClick={() => window.open('https://wa.me/79139511507', '_blank')}
+                >
+                  WhatsApp
+                </Button>
+
+                <Button
+                  className="text-white text-xs sm:text-sm md:text-base px-3 md:px-4 py-2"
+                  style={{ backgroundColor: '#229ED9' }}
+                  onClick={() => window.open('https://t.me/+79139511507', '_blank')}
+                >
+                  Telegram
+                </Button>
+              </div>
             </div>
           </div>
         </div>
@@ -1353,8 +1363,8 @@ export default function HomePage() {
               className="inline-flex items-center justify-center w-10 h-10 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors duration-200"
               aria-label="ВКонтакте"
             >
-              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.408 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.864-.525-2.05-1.727-1.033-1.01-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.864 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.203.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.068.627-2.893.102-.576.305-.78.71-.78h1.744c.373 0 .508.203.44.643-.22 1.017-1.033 3.085-1.44 4.067-.22.525-.31.71 0 1.186.203.305.78.78 1.186 1.253.593.593 1.05 1.118 1.05 1.49 0 .22-.102.407-.44.407z"/>
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M23.498 6.186c.164-.543 0-.942-.777-.942h-2.577c-.653 0-.953.343-1.117.726 0 0-1.308 3.178-3.162 5.242-.598.598-.872.789-1.2.789-.163 0-.404-.191-.404-.734V6.186c0-.653-.191-.942-.734-.942H8.94c-.404 0-.653.302-.653.583 0 .618.945.761 1.042 2.5v3.775c0 .826-.149.977-.47.977-.872 0-2.995-3.193-4.255-6.843-.247-.702-.493-.986-1.15-.986H.875c-.734 0-.883.343-.883.726 0 .679.872 4.056 4.056 8.51 2.126 2.992 5.134 4.61 7.865 4.61 1.64 0 1.84-.368 1.84-1.003v-2.325c0-.734.155-.883.68-.883.387 0 1.05.191 2.593 1.66 1.77 1.77 2.063 2.564 3.067 2.564h2.577c.734 0 1.106-.368.893-1.101-.232-.727-1.065-1.783-2.167-3.01-.598-.7-1.495-1.452-1.767-1.828-.387-.5-.276-.721 0-1.166 0 0 3.12-4.393 3.446-5.884z"/>
               </svg>
             </a>
             <a
