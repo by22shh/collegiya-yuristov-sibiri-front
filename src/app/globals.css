@@ -1,0 +1,288 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Clean white background like Sollars */
+.gradient-bg {
+  background: #fbfbfb;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Subtle floating elements - minimal design */
+.floating-element {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(151, 159, 177, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(151, 159, 177, 0.1);
+  animation: float 8s ease-in-out infinite;
+  box-shadow: 0 4px 20px rgba(151, 159, 177, 0.05);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+/* Clean tab styling like Sollars */
+.tab-button {
+  @apply px-8 py-3 text-sm font-medium transition-all duration-300;
+}
+
+.tab-button.active {
+  @apply bg-white text-gray-900 font-semibold border-b-2 border-gray-900;
+}
+
+.tab-button.inactive {
+  @apply bg-transparent text-gray-600 hover:text-gray-900;
+}
+
+/* Clean service card styling like Sollars */
+.service-card {
+  @apply bg-white rounded-xl p-8 shadow-sm transition-all duration-300 cursor-pointer border border-gray-100 hover:shadow-md;
+}
+
+.service-card:hover {
+  @apply transform translate-y-[-2px] shadow-lg border-gray-200;
+}
+
+/* Clean navigation animations */
+.nav-button {
+  @apply transition-all duration-300 ease-out text-gray-700 hover:text-gray-900;
+}
+
+.nav-button:hover {
+  @apply transform translate-y-[-1px];
+}
+
+/* Clean icon styling */
+.service-icon {
+  @apply transition-all duration-300 ease-out text-gray-600;
+}
+
+.service-card:hover .service-icon {
+  @apply text-gray-900;
+}
+
+/* Clean form styling */
+.contact-form {
+  @apply bg-white rounded-2xl p-8 shadow-lg border border-gray-200;
+}
+
+/* Smooth page transitions */
+.page-transition {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+/* Clean team member cards */
+.team-member-card {
+  @apply bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 text-center border border-gray-100;
+}
+
+.team-member-card:hover {
+  @apply transform translate-y-[-2px] border-gray-200;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+  .service-card {
+    @apply p-4 !important;
+  }
+
+  .service-icon {
+    @apply w-5 h-5;
+  }
+
+  .floating-element {
+    display: none;
+  }
+
+  .gradient-bg {
+    min-height: 100vh;
+  }
+
+  /* Улучшенные отступы для мобильных */
+  .page-transition {
+    @apply px-2;
+  }
+
+  /* Адаптивный текст */
+  h1 {
+    @apply text-2xl;
+  }
+
+  h2 {
+    @apply text-xl;
+  }
+
+  h3 {
+    @apply text-base;
+  }
+
+  /* Форма обратной связи на мобильных */
+  .contact-form-overlay {
+    @apply p-4;
+  }
+
+  .contact-form {
+    @apply w-full mx-4 max-h-[90vh] overflow-y-auto;
+  }
+
+  /* Адаптивные кнопки */
+  .nav-button {
+    @apply text-sm px-3 py-2;
+  }
+
+  /* Табы для мобильных */
+  .tab-button {
+    @apply px-4 py-2 text-xs;
+  }
+}
+
+/* Анимация для мобильного меню */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slideDown {
+  animation: slideDown 0.3s ease-out;
+}
+
+/* Улучшенная типографика для мобильных */
+@media (max-width: 640px) {
+  body {
+    @apply text-sm;
+  }
+
+  .text-xs {
+    font-size: 0.7rem;
+  }
+
+  .text-sm {
+    font-size: 0.875rem;
+  }
+
+  .text-base {
+    font-size: 0.95rem;
+  }
+
+  .text-lg {
+    font-size: 1.05rem;
+  }
+
+  .text-xl {
+    font-size: 1.25rem;
+  }
+
+  .text-2xl {
+    font-size: 1.5rem;
+  }
+
+  .text-3xl {
+    font-size: 1.75rem;
+  }
+
+  /* Карточки услуг на маленьких экранах */
+  .service-card {
+    @apply shadow-sm hover:shadow-md;
+  }
+
+  /* Футер на мобильных */
+  footer {
+    @apply text-xs;
+  }
+}
+
+/* Исправление проблем с overflow на iOS */
+@supports (-webkit-touch-callout: none) {
+  body {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Безопасные области для iPhone X и новее */
+@supports (padding: max(0px)) {
+  .header,
+  .footer {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
+
+  .bottom-nav {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+}
