@@ -984,8 +984,8 @@ export default function HomePage() {
             className="inline-flex items-center justify-center w-10 h-10 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors duration-200"
             aria-label="ВКонтакте"
           >
-            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.408 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.864-.525-2.05-1.727-1.033-1.01-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.864 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.203.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.068.627-2.893.102-.576.305-.78.71-.78h1.744c.373 0 .508.203.44.643-.22 1.017-1.033 3.085-1.44 4.067-.22.525-.31.71 0 1.186.203.305.78.78 1.186 1.253.593.593 1.05 1.118 1.05 1.49 0 .22-.102.407-.44.407z"/>
+            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M23.498 6.186c.164-.543 0-.942-.777-.942h-2.577c-.653 0-.953.343-1.117.726 0 0-1.308 3.178-3.162 5.242-.598.598-.872.789-1.2.789-.163 0-.404-.191-.404-.734V6.186c0-.653-.191-.942-.734-.942H8.94c-.404 0-.653.302-.653.583 0 .618.945.761 1.042 2.5v3.775c0 .826-.149.977-.47.977-.872 0-2.995-3.193-4.255-6.843-.247-.702-.493-.986-1.15-.986H.875c-.734 0-.883.343-.883.726 0 .679.872 4.056 4.056 8.51 2.126 2.992 5.134 4.61 7.865 4.61 1.64 0 1.84-.368 1.84-1.003v-2.325c0-.734.155-.883.68-.883.387 0 1.05.191 2.593 1.66 1.77 1.77 2.063 2.564 3.067 2.564h2.577c.734 0 1.106-.368.893-1.101-.232-.727-1.065-1.783-2.167-3.01-.598-.7-1.495-1.452-1.767-1.828-.387-.5-.276-.721 0-1.166 0 0 3.12-4.393 3.446-5.884z"/>
             </svg>
           </a>
             <a
@@ -1034,7 +1034,12 @@ export default function HomePage() {
           <img
             src="/colus-logo.png"
             alt="Логотип Коллегия юристов Сибири"
-            className="w-16 h-16 sm:w-20 sm:h-20 md:w-36 md:h-36 mr-2 object-contain"
+            className="w-16 h-16 sm:w-20 sm:h-20 md:w-36 md:h-36 mr-2 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-200"
+            onClick={() => {
+              setCurrentPage('services');
+              setActiveTab('citizens');
+              setIsMobileMenuOpen(false);
+            }}
           />
           <div className="text-base sm:text-lg md:text-2xl font-bold text-gray-900 tracking-tight">
             <span className="hidden sm:inline">Коллегия юристов Сибири</span>
@@ -1114,8 +1119,33 @@ export default function HomePage() {
 
       {/* Mobile Navigation Menu */}
       {isMobileMenuOpen && (
-        <nav className="md:hidden absolute top-full left-0 right-0 bg-white shadow-lg z-50 py-4 px-4 animate-slideDown">
-          <div className="flex flex-col gap-2">
+        <nav className="md:hidden fixed inset-0 bg-white shadow-lg z-50 animate-slideDown">
+          {/* Заголовок в мобильном меню */}
+          <div className="w-full py-2 px-4 bg-white border-b border-gray-200">
+            <div className="flex items-center justify-between max-w-7xl mx-auto">
+              <div className="flex items-center">
+                <img
+                  src="/colus-logo.png"
+                  alt="Логотип Коллегия юристов Сибири"
+                  className="w-16 h-16 sm:w-20 sm:h-20 md:w-36 md:h-36 mr-2 object-contain"
+                />
+                <div className="text-base sm:text-lg md:text-2xl font-bold text-gray-900 tracking-tight">
+                  <span className="hidden sm:inline">Коллегия юристов Сибири</span>
+                  <span className="sm:hidden">Коллегия юристов<br/>Сибири</span>
+                </div>
+              </div>
+              <button
+                className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+                aria-label="Закрыть меню"
+              >
+                <X className="w-6 h-6 text-gray-700" />
+              </button>
+            </div>
+          </div>
+          
+          {/* Навигационные пункты */}
+          <div className="flex flex-col gap-2 px-4 py-4 h-full overflow-y-auto">
             <Button
               variant="ghost"
               className="w-full text-left text-gray-700 hover:text-gray-900 hover:bg-gray-50 py-3 px-4 rounded-lg justify-start"
@@ -1261,8 +1291,8 @@ export default function HomePage() {
         <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3 sm:mb-4">Свяжитесь с нами</h2>
         <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8 px-4 sm:px-0">
           Заполните короткую форму, и мы перезвоним<br className="hidden sm:block" />
-          <span className="sm:hidden">Вам в течение дня</span>
-          <span className="hidden sm:inline">Вам в течение дня</span>
+          <span className="sm:hidden"> Вам в течение дня</span>
+          <span className="hidden sm:inline"> Вам в течение дня</span>
         </p>
 
         <div className="space-y-3 sm:space-y-4 md:space-y-6 max-w-2xl mx-auto">

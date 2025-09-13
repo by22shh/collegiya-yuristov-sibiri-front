@@ -3,7 +3,7 @@
 
 [build]
   command = "bun run build"
-  publish = ".next"
+  publish = "out"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
