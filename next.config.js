@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  // output: 'export', // Убираем статический экспорт для работы API роутов
   trailingSlash: true,
   allowedDevOrigins: ["*.preview.same-app.com"],
   images: {
