@@ -93,7 +93,7 @@ export default function ContactForm({ onClose }: ContactFormProps) {
         <CheckCircle className="w-12 h-12 md:w-16 md:h-16 text-green-600 mx-auto mb-4" />
         <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-2">Спасибо за обращение!</h3>
         <p className="text-sm md:text-base text-gray-700">
-          Мы получили ваше сообщение и свяжемся с вами в ближайшее время.
+          Мы получили Ваше сообщение и свяжемся с Вами в ближайшее время.
         </p>
       </div>
     );
