@@ -3,6 +3,7 @@
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Users, Award, Shield, Clock, Scale, Handshake, Target, GraduationCap, Star, CreditCard, Smartphone, BookOpen, Send } from 'lucide-react';
+import TelegramIcon from '@/components/TelegramIcon';
 
 interface TeamMember {
   name: string;
@@ -223,7 +224,7 @@ export default function AboutSection({ onPrivacyPolicy }: AboutSectionProps = {}
               className="inline-flex items-center justify-center w-10 h-10 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors duration-200"
               aria-label="Telegram"
             >
-              <Send className="w-5 h-5" />
+              <TelegramIcon className="w-5 h-5" />
             </a>
           </div>
         </div>

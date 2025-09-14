@@ -43,6 +43,7 @@ import ContactForm from '@/components/ContactForm';
 import AboutSection from '@/components/AboutSection';
 import ServiceDetailPage from '@/components/ServiceDetailPage';
 import PrivacyPolicy from '@/components/PrivacyPolicy';
+import TelegramIcon from '@/components/TelegramIcon';
 import Image from 'next/image';
 import mainLogo from '@/../public/main-logo.png';
 
@@ -995,7 +996,7 @@ export default function HomePage() {
               className="inline-flex items-center justify-center w-10 h-10 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors duration-200"
               aria-label="Telegram"
             >
-              <Send className="w-5 h-5" />
+              <TelegramIcon className="w-5 h-5" />
             </a>
         </div>
       </div>
@@ -1404,7 +1405,7 @@ export default function HomePage() {
               className="inline-flex items-center justify-center w-10 h-10 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors duration-200"
               aria-label="Telegram"
             >
-              <Send className="w-5 h-5" />
+              <TelegramIcon className="w-5 h-5" />
             </a>
           </div>
         </div>
