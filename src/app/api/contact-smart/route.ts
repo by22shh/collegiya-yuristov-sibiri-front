@@ -55,7 +55,7 @@ ${message}
         connectionTimeout: 3000,  // 3 секунды
         greetingTimeout: 3000,    // 3 секунды
         socketTimeout: 3000,      // 3 секунды
-      });
+      } as nodemailer.TransportOptions);
 
       const result = await Promise.race([
         transporter.sendMail({

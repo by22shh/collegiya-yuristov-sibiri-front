@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
       connectionTimeout: 5000,  // 5 секунд
       greetingTimeout: 5000,    // 5 секунд
       socketTimeout: 5000,      // 5 секунд
-    });
+    } as nodemailer.TransportOptions);
 
     // Определение типа услуги
     const serviceTypeLabels = {

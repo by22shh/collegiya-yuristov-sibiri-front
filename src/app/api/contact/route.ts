@@ -44,7 +44,7 @@ export async function POST(request: NextRequest) {
       pool: false,              // не использовать пул соединений
       maxConnections: 1,        // максимум 1 соединение
       maxMessages: 1,           // максимум 1 сообщение за соединение
-    });
+    } as nodemailer.TransportOptions);
 
     console.log('SMTP транспорт создан, пропускаем проверку соединения для ускорения...');
 
