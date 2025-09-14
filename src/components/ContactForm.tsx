@@ -22,42 +22,69 @@ const formSchema = z.object({
 type FormData = z.infer<typeof formSchema>;
 
 interface ContactFormProps {
-  onClose?: () => void;
+  readonly onClose?: () => void;
 }
 
 export default function ContactForm({ onClose }: ContactFormProps) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const {
     register,
     handleSubmit,
     setValue,
-    watch,
     formState: { errors },
     reset,
   } = useForm<FormData>({
     resolver: zodResolver(formSchema),
   });
 
-  const serviceType = watch('serviceType');
 
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
+    setError(null);
 
-    // Симуляция отправки формы
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    try {
+      // Добавляем таймаут для запроса (15 секунд)
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 15000);
 
-    console.log('Данные формы:', data);
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+      const response = await fetch('/api/contact-smart', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+        signal: controller.signal,
+      });
 
-    // Очистка формы через 3 секунды
-    setTimeout(() => {
-      setIsSubmitted(false);
-      reset();
-      onClose?.();
-    }, 3000);
+      clearTimeout(timeoutId);
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Ошибка при отправке сообщения');
+      }
+
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+
+      // Очистка формы через 3 секунды
+      setTimeout(() => {
+        setIsSubmitted(false);
+        reset();
+        onClose?.();
+      }, 3000);
+    } catch (error) {
+      console.error('Ошибка при отправке формы:', error);
+      setIsSubmitting(false);
+      
+      if (error instanceof Error && error.name === 'AbortError') {
+        setError('Превышено время ожидания. Проверьте подключение к интернету и попробуйте еще раз.');
+      } else {
+        setError(error instanceof Error ? error.message : 'Произошла ошибка при отправке сообщения');
+      }
+    }
   };
 
   if (isSubmitted) {
@@ -92,6 +119,15 @@ export default function ContactForm({ onClose }: ContactFormProps) {
       <h2 className="text-lg md:text-xl font-bold text-gray-900 text-center mb-4">
         Форма обратной связи
       </h2>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 rounded-lg p-3 mb-4">
+          <div className="flex items-center">
+            <X className="w-4 h-4 text-red-500 mr-2" />
+            <p className="text-red-700 text-sm">{error}</p>
+          </div>
+        </div>
+      )}
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
         <div>
