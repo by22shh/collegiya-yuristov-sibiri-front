@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(request: NextRequest) {
   try {
     console.log('Получен запрос на отправку формы через Resend');
@@ -29,6 +27,15 @@ export async function POST(request: NextRequest) {
     };
 
     const serviceLabel = serviceTypeLabels[serviceType as keyof typeof serviceTypeLabels] || serviceType;
+
+    if (!process.env.RESEND_API_KEY) {
+      return NextResponse.json(
+        { error: 'Сервис отправки сообщений не настроен' },
+        { status: 503 }
+      );
+    }
+
+    const resend = new Resend(process.env.RESEND_API_KEY);
 
     // Отправка email через Resend
     console.log('Отправляем письмо через Resend...');
