@@ -3,6 +3,10 @@ node_modules/
 .pnp
 .pnp.js
 
+# Local credentials and environment configuration
+.env
+.env.*
+
 # Testing
 /coverage
 
